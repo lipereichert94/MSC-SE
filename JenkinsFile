@@ -8,13 +8,15 @@ pipeline {
             steps {
                 sh 'ls -lah'
                  dir('demo') {
-                  sh 'mvn -B -DskipTests clean package' 
+                 // sh 'mvn -B -DskipTests clean package' 
+                 sh 'mvn -Dmaven.test.failure.ignore=true install' 
                              }               
                    }
                    post {
                 success {
+                                     dir('demo') {
                     junit 'target/surefire-reports/**/*.xml' 
-                }
+                }}
             }
                         }
                         
