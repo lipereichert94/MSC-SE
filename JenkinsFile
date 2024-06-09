@@ -1,16 +1,5 @@
-#!groovy
-pipeline {
-    agent none
-   stages {     
-    stage('Maven Install') {
-      agent {         
-       docker {          
-         image 'maven:3.5.0'         
-     }       
-  }       
-  steps {
-       sh 'mvn clean install'
-       }
-     }
-   }
- }
+dockerNode('jenkins/jnlp-agent-maven') {
+    git 'https://github.com/jglick/simple-maven-project-with-tests'
+    sh 'mvn -B -Dmaven.test.failure.ignore install'
+    junit '**/target/surefire-reports/TEST-*.xml'
+}
