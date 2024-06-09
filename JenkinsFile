@@ -4,14 +4,7 @@ node {
 
     try{
 //          notifyBuild('STARTED')
-stage('Build') { 
-            steps {
-                    git url: 'https://github.com/cyrille-leclerc/multi-module-maven-project'
-                sh 'mvn -B -DskipTests clean package'
-                archive 'target/*.jar' 
-            
-            }
-        }
+
 stage('Clone Repo') {
         // for display purposes
         // Get some code from a GitHub repository
