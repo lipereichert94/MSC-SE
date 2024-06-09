@@ -1,5 +1,5 @@
 # Docker Build Stage
-FROM maven:maven AS build
+FROM maven AS build
 
 
 # Build Stage
