@@ -2,9 +2,9 @@ FROM maven:3-jdk-8-alpine AS build
 
 
 # Build Stage
-WORKDIR /opt/demo
+WORKDIR /var/jenkins_home/workspace/DevOps
 
-COPY ./ /opt/demo
+COPY ./ /var/jenkins_home/workspace/DevOps
 RUN mvn clean install -DskipTests
 
 # Docker Build Stage
