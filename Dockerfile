@@ -10,7 +10,9 @@ RUN pwd
 RUN echo "output"
 RUN ls -alh
 RUN mvn clean install -DskipTests
-
+RUN pwd
+RUN echo "after mvn"
+RUN ls -alh
 
 # Docker Build Stage
 FROM openjdk:8-jdk-alpine
