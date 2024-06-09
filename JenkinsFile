@@ -9,7 +9,7 @@ stage('Clone Repo') {
         // Get some code from a GitHub repository
             git url: 'https://gitlab.com/gpranataAsyst/springboot-demodeploy.git',
             credentialsId: 'eb749812-6b20-4ad4-9f69-a6a23c8f5e46',
-            branch: 'main'
+            branch: 'master'
      }
           stage('Build docker') {
                  dockerImage = docker.build("springboot-deploy:${env.BUILD_NUMBER}")
