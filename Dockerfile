@@ -15,7 +15,7 @@ RUN echo "after mvn"
 RUN ls -alh
 
 # Docker Build Stage
-FROM openjdk:8-jdk-alpine
+FROM openjdk
 
 COPY --from=build /opt/app/demo/target/*.jar app.jar
 
