@@ -3,13 +3,13 @@ node {
     def dockerImageTag = "springboot-deploy${env.BUILD_NUMBER}"
 
     try{
-tools { 
-        mvn 'mvn 3.9.7' 
-    }
+
 //          notifyBuild('STARTED')
  stage('Build and Test') {
           
-                    sh 'mvn clean package'
+                    withMaven {
+          sh "mvn clean verify"
+        }
                 
             
         }
