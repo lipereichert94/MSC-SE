@@ -15,7 +15,11 @@ pipeline {
                 post {
                 success {
                     dir('demo') {
-                    junit 'target/surefire-reports/**/*.xml' 
+                    // junit 'target/surefire-reports/**/*.xml' 
+                }}
+                unstable {
+                    echo 'NO SUCCESS' {
+                    // junit 'target/surefire-reports/**/*.xml' 
                 }}
             }
                         }
@@ -36,6 +40,7 @@ stage('Clone Repo') {
             credentialsId: 'eb749812-6b20-4ad4-9f69-a6a23c8f5e46',
             branch: 'main'
      }
+
           stage('Build docker') {
                  dockerImage = docker.build("springboot-deploy:${env.BUILD_NUMBER}")
           }
