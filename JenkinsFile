@@ -1,20 +1,11 @@
-
-
     pipeline {
 
     agent any
-
+   tools {
+        maven 'mvn 3.9.7'
+    }
     stages {
 
-    stage(‘checkout’) {
-
-    steps {
-
-    git branch: ‘main’, url: ‘https://github.com/lipereichert94/MSC-SE.git’
-
-    }
-
-    }
 
     stage(‘build’) {
 
