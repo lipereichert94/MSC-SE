@@ -21,6 +21,9 @@ pipeline {
                     echo 'NO SUCCESS' {
                     // junit 'target/surefire-reports/**/*.xml' 
                 }}
+                failure {
+                     echo 'I failed :('
+        }
             }
                         }
                     stage('Deploy'){
