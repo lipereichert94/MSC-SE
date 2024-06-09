@@ -1,6 +1,6 @@
 node {
-    def WORKSPACE = "/var/jenkins_home/jobs/DevOps/"
-    def dockerImageTag = "DevOps${env.BUILD_NUMBER}"
+    def WORKSPACE = "/var/jenkins_home/workspace/DevOps"
+    def dockerImageTag = "devops${env.BUILD_NUMBER}"
 
     try{
 //          notifyBuild('STARTED')
@@ -12,13 +12,13 @@ stage('Clone Repo') {
             branch: 'main'
      }
           stage('Build docker') {
-                 dockerImage = docker.build("DevOps:${env.BUILD_NUMBER}")
+                 dockerImage = docker.build("devops:${env.BUILD_NUMBER}")
           }
 
           stage('Deploy docker'){
                   echo "Docker Image Tag Name: ${dockerImageTag}"
-                  sh "docker stop DevOps || true && docker rm DevOps|| true"
-                  sh "docker run --name DevOps -d -p 8081:8081 DevOps:${env.BUILD_NUMBER}"
+                  sh "docker stop devops || true && docker rm devops|| true"
+                  sh "docker run --name devops -d -p 8081:8081 devops:${env.BUILD_NUMBER}"
           }
     }catch(e){
 //         currentBuild.result = "FAILED"
