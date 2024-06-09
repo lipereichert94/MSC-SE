@@ -1,30 +1,16 @@
-node {
-    def WORKSPACE = "/var/jenkins_home/jobs/DevOps/"
-    def dockerImageTag = "DevOps${env.BUILD_NUMBER}"
-
-    try{
-//          notifyBuild('STARTED')
-stage('Clone Repo') {
-        // for display purposes
-        // Get some code from a GitHub repository
-        git url: 'https://github.com/lipereichert94/MSC-SE.git',
-            credentialsId: 'eb749812-6b20-4ad4-9f69-a6a23c8f5e46',
-            branch: 'main'
+#!groovy
+pipeline {
+    agent none
+   stages {     
+    stage('Maven Install') {
+      agent {         
+       docker {          
+         image 'maven:3.5.0'         
+     }       
+  }       
+  steps {
+       sh 'mvn clean install'
+       }
      }
-          stage('Build docker') {
-                 dockerImage = docker.build("DevOps:${env.BUILD_NUMBER}")
-          }
-
-          stage('Deploy docker'){
-                  echo "Docker Image Tag Name: ${dockerImageTag}"
-                  sh "docker stop DevOps || true && docker rm DevOps|| true"
-                  sh "docker run --name DevOps -d -p 8081:8081 DevOps:${env.BUILD_NUMBER}"
-          }
-    }catch(e){
-//         currentBuild.result = "FAILED"
-        throw e
-    }finally{
-//         notifyBuild(currentBuild.result)
-    }
-}
-
+   }
+ }
