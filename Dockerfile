@@ -3,7 +3,7 @@ FROM maven:3-jdk-8-alpine AS build
 
 
 # Build Stage
-WORKDIR /opt/app/
+WORKDIR /opt/app/demo
 
 COPY ./ /opt/app/
 RUN pwd
