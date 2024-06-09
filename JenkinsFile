@@ -7,8 +7,11 @@ pipeline {
         stage('Build') { 
             steps {
                 sh 'ls -lah'
-                sh 'cd demo'
-                sh 'ls -lah'
+   dir('demo') {
+      sh "pwd"
+                      sh 'ls -lah'
+
+    }               
                 sh 'mvn -B -DskipTests clean package' 
                             }
             }
