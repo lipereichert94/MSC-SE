@@ -1,18 +1,14 @@
 pipeline {
     agent any
-    
-    stages {
-       stage('Build') { 
-            steps {
-                    git url: 'https://github.com/cyrille-leclerc/multi-module-maven-project'
-                            withMaven {
-                sh 'mvn -B -DskipTests clean package' 
-            }
-            }
-        }
+    tools {
+        maven 'Maven 3.3.9'
+        maven 'mvn 3.9.7'
     }
-}
-
+    stages {
+        stage('Build') { 
+            }
+            }
+            }
 // node{
 //     def WORKSPACE = "/var/jenkins_home/workspace/springboot-deploy"
 //     def dockerImageTag = "springboot-deploy${env.BUILD_NUMBER}"
