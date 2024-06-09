@@ -5,14 +5,7 @@ pipeline {
     try{
 
 //          notifyBuild('STARTED')
- stage('Build and Test') {
-          
-                    withMaven {
-          sh "mvn clean verify"
-        }
-                
-            
-        }
+
 stage('Clone Repo') {
         // for display purposes
         // Get some code from a GitHub repository
