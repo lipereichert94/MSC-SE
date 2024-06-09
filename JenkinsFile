@@ -11,6 +11,14 @@ stage('Clone Repo') {
             credentialsId: 'eb749812-6b20-4ad4-9f69-a6a23c8f5e46',
             branch: 'main'
      }
+           stage('Build') { 
+            steps {
+                    git url: 'https://github.com/cyrille-leclerc/multi-module-maven-project'
+                sh 'mvn -B -DskipTests clean package'
+                archive 'target/*.jar' 
+            
+            }
+        }
           stage('Build docker') {
                  dockerImage = docker.build("devops:${env.BUILD_NUMBER}")
           }
