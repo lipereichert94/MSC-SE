@@ -6,9 +6,9 @@ FROM maven:3-jdk-8-alpine AS build
 WORKDIR /opt/app/
 
 COPY ./ /opt/app/
-dir("/") {
-    sh "pwd"
-}
+RUN pwd
+RUN echo "output"
+RUN ls -alh
 RUN mvn clean install -DskipTests
 
 
