@@ -17,7 +17,7 @@ RUN ls -alh
 # Docker Build Stage
 FROM openjdk:8-jdk-alpine
 
-COPY --from=build /opt/app/target/*.jar app.jar
+COPY --from=build /opt/app/demo/target/*.jar app.jar
 
 ENV PORT 8081
 EXPOSE $PORT
