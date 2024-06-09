@@ -1,5 +1,5 @@
 # Docker Build Stage
-FROM maven:3-jdk-8-alpine AS build
+FROM maven:3.7-jdk-8-alpine AS build
 
 
 # Build Stage
