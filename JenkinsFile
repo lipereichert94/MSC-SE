@@ -3,9 +3,8 @@ node{
     def dockerImageTag = "springboot-deploy${env.BUILD_NUMBER}"
 
    stage('Build') { 
-            steps {
                 sh 'mvn -B -DskipTests clean package' 
-            }
+            
         }
 
 
