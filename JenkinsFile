@@ -14,7 +14,7 @@ pipeline {
                    }
                 post {
                 success {
-                    dir('demo') 
+                    echo 'SUCCESS' 
                         }
                 unstable {
                     echo 'NO SUCCESS' 
