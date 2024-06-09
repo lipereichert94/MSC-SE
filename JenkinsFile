@@ -8,7 +8,7 @@ pipeline {
             steps {
                     git url: 'https://github.com/cyrille-leclerc/multi-module-maven-project'
                 sh 'mvn -B -DskipTests clean package'
-archiveArtifacts artifacts: 'screenshots/**,build/test/results/*.xml', allowEmptyArchive: true
+                archive 'target/*.jar' 
             
             }
         }
