@@ -1,17 +1,23 @@
-pipeline {
-    agent any
-    tools {
-        maven 'mvn 3.9.7'
-    }
-    stages {
-        stage('Build') { 
-            steps {
-                    git url: 'https://github.com/cyrille-leclerc/multi-module-maven-project'
-                sh 'mvn -B -DskipTests clean package'
-                archive 'target/*.jar' 
-            
-            }
-        }
+node {
+    def WORKSPACE = "/var/jenkins_home/jobs/DevOps/"
+    def dockerImageTag = "DevOps${env.BUILD_NUMBER}"
+
+    try{
+//          notifyBuild('STARTED')
+          stage('Build docker') {
+                 dockerImage = docker.build("DevOps:${env.BUILD_NUMBER}")
+          }
+
+          stage('Deploy docker'){
+                  echo "Docker Image Tag Name: ${dockerImageTag}"
+                  sh "docker stop DevOps || true && docker rm DevOps|| true"
+                  sh "docker run --name DevOps -d -p 8081:8081 DevOps:${env.BUILD_NUMBER}"
+          }
+    }catch(e){
+//         currentBuild.result = "FAILED"
+        throw e
+    }finally{
+//         notifyBuild(currentBuild.result)
     }
 }
 
