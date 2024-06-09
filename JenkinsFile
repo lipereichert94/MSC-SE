@@ -11,12 +11,13 @@ pipeline {
                   sh 'mvn -B -DskipTests clean package' 
                              }               
                    }
-                        }
-                        post {
+                   post {
                 success {
                     junit 'target/surefire-reports/**/*.xml' 
                 }
             }
+                        }
+                        
             }
         }
 // node{
