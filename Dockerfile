@@ -3,9 +3,12 @@ FROM maven:3-jdk-8-alpine AS build
 
 
 # Build Stage
-WORKDIR /opt/app/demo
+WORKDIR /opt/app/
 
-COPY ./ /opt/app/demo
+COPY ./ /opt/app/
+dir("/") {
+    sh "pwd"
+}
 RUN mvn clean install -DskipTests
 
 
