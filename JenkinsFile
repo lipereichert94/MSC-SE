@@ -14,24 +14,17 @@ pipeline {
                    }
                 post {
                 success {
-                    dir('demo') {
-                    // junit 'target/surefire-reports/**/*.xml' 
-                }}
+                    dir('demo') 
+                        }
                 unstable {
-                    echo 'NO SUCCESS' {
-                    // junit 'target/surefire-reports/**/*.xml' 
-                }}
+                    echo 'NO SUCCESS' 
+                         }
                 failure {
                      echo 'I failed :('
-        }
+                        }
             }
                         }
-                    stage('Deploy'){
-                                    steps {
-                sh 'ls -lah'
-
-            }
-        }}}
+                }}
 node{
     def WORKSPACE = "/var/jenkins_home/workspace/springboot-deploy"
     def dockerImageTag = "springboot-deploy${env.BUILD_NUMBER}"
