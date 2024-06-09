@@ -8,8 +8,21 @@ pipeline {
             steps {
                     git url: 'https://github.com/cyrille-leclerc/multi-module-maven-project'
                             withMaven {
-                sh 'mvn -B -DskipTests clean package' 
+                sh 'mvn -B -DskipTests clean package'
+                archive 'target/*.jar' 
             }
+            }
+        }
+         stage('Test') {
+            steps {
+                                        withMaven {
+                sh 'mvn test'
+            }
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
             }
         }
     }
