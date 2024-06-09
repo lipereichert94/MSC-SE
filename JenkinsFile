@@ -4,18 +4,22 @@ pipeline {
         maven 'mvn 3.9.7'
     }
     stages {
-        stage('Build') {
+        stage('Build') { 
             steps {
+                    git url: 'https://github.com/cyrille-leclerc/multi-module-maven-project'
                 sh 'mvn -B -DskipTests clean package'
+                archive 'target/*.jar' 
+            
             }
         }
-        stage('Test') { 
+         stage('Test') {
             steps {
-                sh 'mvn test' 
+                sh 'mvn test'
+            
             }
             post {
                 always {
-                    junit 'target/surefire-reports/*.xml' 
+                    junit 'target/surefire-reports/*.xml'
                 }
             }
         }
