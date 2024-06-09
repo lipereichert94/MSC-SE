@@ -1,4 +1,4 @@
-node {
+pipeline {
     def WORKSPACE = "/var/jenkins_home/workspace/springboot-deploy"
     def dockerImageTag = "springboot-deploy${env.BUILD_NUMBER}"
 
