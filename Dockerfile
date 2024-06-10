@@ -9,7 +9,7 @@ COPY ./ /opt/app/
 RUN pwd
 RUN echo "output"
 RUN ls -alh
-RUN mvn clean install -DskipTests
+#RUN mvn clean install -DskipTests
 RUN pwd
 RUN echo "after mvn"
 RUN ls -alh
