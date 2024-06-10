@@ -26,8 +26,9 @@ pipeline {
                         }
                         stage('Integration') {
                                 steps{
+                                                     dir('demo') {
   junit 'test-results.xml'
-}}
+}}}
 
                 }}
 node{
