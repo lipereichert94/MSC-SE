@@ -14,12 +14,15 @@ pipeline {
                    }
                 post {
                 success {
+                    junit 'target/surefire-reports/*.xml'
                     echo 'SUCCESS' 
                         }
                 unstable {
+                    junit 'target/surefire-reports/*.xml'
                     echo 'NO SUCCESS' 
                          }
                 failure {
+                    junit 'target/surefire-reports/*.xml'
                      echo 'I failed :('
                         }
             }
@@ -28,7 +31,8 @@ pipeline {
                                 steps{
                                                      dir('demo') {
                                                                         sh 'ls -lah'
-            junit 'target/surefire-reports/*.xml'}}}
+            //junit 'target/surefire-reports/*.xml'
+            }}}
 
                 }}
 node{
