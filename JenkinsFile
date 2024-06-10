@@ -20,6 +20,10 @@ pipeline {
                     echo 'NO SUCCESS' 
                          }
                 failure {
+                     dir('demo/target/surefire-reports/') {
+                         sh 'ls -lah'
+                        }
+                     sh 'ls -lah'
                      echo 'I failed :('
                         }
             }
