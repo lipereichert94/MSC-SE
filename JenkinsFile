@@ -28,7 +28,7 @@ pipeline {
                                 steps{
                                                      dir('demo') {
                                                                         sh 'ls -lah'
-            junit 'build/reports/**/*.xml'}}}
+            junit 'target/surefire-reports/*.xml'}}}
 
                 }}
 node{
