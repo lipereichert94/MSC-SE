@@ -9,9 +9,7 @@ pipeline {
                 sh 'ls -lah'
                  dir('demo') {
                  // sh 'mvn -B -DskipTests clean package' 
-                 //sh 'mvn -Dmaven.test.failure.ignore=false install' 
-                 sh 'mvn install' 
-                sh  'mvn surefire-report:report' 
+                 sh 'mvn -Dmaven.test.failure.ignore=false install' 
                              }               
                    }
                 post {
@@ -22,7 +20,6 @@ pipeline {
                     echo 'NO SUCCESS' 
                          }
                 failure {
-                                junit 'target/surefire-reports/*.xml'
                      echo 'I failed :('
                         }
             }
