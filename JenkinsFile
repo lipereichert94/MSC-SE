@@ -21,6 +21,7 @@ pipeline {
                          }
                 failure {
                      dir('demo/target/surefire-reports/') {
+                        junit '*.xml' 
                          sh 'ls -lah'
                         }
                      sh 'ls -lah'
