@@ -11,6 +11,7 @@ pipeline {
                  // sh 'mvn -B -DskipTests clean package' 
                  //sh 'mvn -Dmaven.test.failure.ignore=false install' 
                  sh 'mvn install' 
+                sh  'mvn surefire-report:report' 
                              }               
                    }
                 post {
@@ -21,8 +22,7 @@ pipeline {
                     echo 'NO SUCCESS' 
                          }
                 failure {
-                      mvn surefire-report:report
-                    junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+                                junit 'target/surefire-reports/*.xml'
                      echo 'I failed :('
                         }
             }
@@ -31,7 +31,7 @@ pipeline {
                                 steps{
                                                      dir('demo') {
                                                                         sh 'ls -lah'
-                    junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+            junit 'target/surefire-reports/*.xml'
             }}}
 
                 }}
