@@ -21,6 +21,7 @@ pipeline {
                     echo 'NO SUCCESS' 
                          }
                 failure {
+                      mvn surefire-report:report
                     junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
                      echo 'I failed :('
                         }
