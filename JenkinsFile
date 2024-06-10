@@ -27,6 +27,7 @@ pipeline {
                         stage('Integration') {
                                 steps{
                                                      dir('demo') {
+                                                                        sh 'ls -lah'
             junit 'build/reports/**/*.xml'}}}
 
                 }}
