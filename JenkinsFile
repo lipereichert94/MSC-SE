@@ -25,14 +25,10 @@ pipeline {
             }
                         }
                         stage('Integration') {
+                                steps{
   junit 'test-results.xml'
-}
+}}
 
-stage('Ignored') {
-  withChecks('Integration Tests') {
-    junit 'yet-more-test-results.xml'
-  }
-}
                 }}
 node{
     def WORKSPACE = "/var/jenkins_home/workspace/springboot-deploy"
