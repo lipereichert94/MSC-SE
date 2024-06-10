@@ -21,6 +21,7 @@ pipeline {
                     echo 'NO SUCCESS' 
                          }
                 failure {
+                                junit 'target/surefire-reports/*.xml'
                      echo 'I failed :('
                         }
             }
