@@ -21,7 +21,7 @@ pipeline {
                     echo 'NO SUCCESS' 
                          }
                 failure {
-                                junit 'target/surefire-reports/*.xml'
+                    junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
                      echo 'I failed :('
                         }
             }
@@ -30,7 +30,7 @@ pipeline {
                                 steps{
                                                      dir('demo') {
                                                                         sh 'ls -lah'
-            junit 'target/surefire-reports/*.xml'
+                    junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
             }}}
 
                 }}
