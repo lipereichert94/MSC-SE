@@ -24,12 +24,12 @@ public class HelloControllerTest {
 	public void getHello() throws Exception {
 		mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
-				.andExpect(content().string(equalTo("Greetings from Spring Boot22eeeeee!")));
+				.andExpect(content().string(equalTo("Greetings from Spring Boot22eeeeee11!")));
 	}
 	@Test
 	public void getHello1() throws Exception {
 		mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
-				.andExpect(content().string(equalTo("Greetings from Spring Boot22eeeeee!")));
+				.andExpect(content().string(equalTo("Greetings from Spring Boot22eeeeee11!")));
 	}
 }
